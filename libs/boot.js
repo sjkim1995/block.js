@@ -9,13 +9,12 @@ module.exports = app => {
     };
     app.db.sequelize.sync().done(() => {
       const server  = https.createServer(credentials, app);
+      
+      // attach socket io to the application
       const io = require('socket.io').listen(server);
       app.set("socketio", io);
       
-      io.sockets.on('connection', (socket) => {
-        console.log("socket handshake established");
-      });
-
+      // listen for requests on port 3000
       server.listen(app.get('port'), () => {
           console.log(`NTask API - Port ${app.get('port')}`);
       });

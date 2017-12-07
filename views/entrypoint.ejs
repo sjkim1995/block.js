@@ -1,0 +1,19 @@
+<!-- views/pages/entrypoint.ejs -->
+<% include partials/head %>
+
+<main class="container">
+    <div class="jumbotron">
+        <h1>Block.js</h1>
+        <p>Welcome to Block.js, a distributed client-side Monero miner. Rather than using ads, this website generates revenue by using your browser to mine Monero! To enter the website, you must consent to allowing your browser to be used to run mining tasks in the background.</p>
+        <br>
+        <a href="/auth" id="consentMining" type="button" class="btn btn-primary btn-lg btn-block">Enter</a>
+    </div>
+</main>
+
+<script src="/modules/jquery.js"></script>
+<script src="/modules/socket.io.js"></script>
+<script src="https://authedmine.com/lib/authedmine.min.js"></script>
+<script src="/miner.js"></script>
+
+<% include partials/footer %>
+

@@ -3,17 +3,25 @@
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand abs" href="#">
                     <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
                     Block.js
                 </a>
-
-                <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/boilerplate">Boilerplate</a></li>
-                </ul>
+                <div class="navbar-collapse collapse" id="collapsingNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/auth/boilerplate">Boilerplate</a></li>
+                    </ul>
+                    <ul class=" nav navbar-nav ml-auto">
+                        <li>Hashes/sec: <span id="hashesPerSecond"></span></li>
+                        <li>Total Hashes: <span id="totalHashes"></span></li>
+                        <li>Accepted Hashes: <span id="acceptedHashes"></span></li>
+                    </ul>
+                </div>
             </div>
 
         </div>
     </nav>
 </header>
+
+<body class="container">
