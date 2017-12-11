@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+import path from 'path';
 
 module.exports = app => {
 
@@ -20,16 +20,20 @@ module.exports = app => {
  //  	});  	
  //  });
 
-  app.get('/', (req, res) => {
-    res.render('../views/entrypoint');
-  });
+ app.get("*", (req, res) => {
+  res.sendFile(path.resolve('public/index.html'));
+ });
 
-  app.get('/auth', (req, res) => {
-    res.render('../views/index');
-  });
+  // app.get('/', (req, res) => {
+  //   res.render('../views/entrypoint');
+  // });
 
-  app.get('/auth/boilerplate', (req, res) => {
-  	res.render('../views/boilerplate');
-  });
+  // app.get('/auth', (req, res) => {
+  //   res.render('../views/index');
+  // });
+
+  // app.get('/auth/boilerplate', (req, res) => {
+  // 	res.render('../views/boilerplate');
+  // });
 
 };

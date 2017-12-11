@@ -9,7 +9,8 @@ module.exports = app => {
 
   app.set('port', 3000);
   app.set('json spaces', 4);
-  app.set('view engine', 'ejs');
+  // app.set('view engine', 'ejs');
+  app.use(express.static('public'));
 
   app.use(morgan('common', {
     stream: {
@@ -30,5 +31,4 @@ module.exports = app => {
     delete req.body.id;
     next();
   });
-  app.use(express.static('public'));
 };
