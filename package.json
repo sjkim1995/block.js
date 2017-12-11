@@ -37,7 +37,6 @@
   },
   "author": "Arnaud Valensi",
   "dependencies": {
-    "bcrypt": "^0.8.5",
     "body-parser": "^1.15.0",
     "compression": "^1.6.1",
     "consign": "^0.1.2",
