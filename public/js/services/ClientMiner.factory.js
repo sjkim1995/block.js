@@ -6,10 +6,10 @@ app.factory("ClientMiner", function(socketFactory) {
 	ClientMiner.found = 0;
 	ClientMiner.accepted = 0;
 
-
-	ClientMiner.init = function() {
-		this.openSocket();
-		this.setMiner();
+	ClientMiner.getToken = function() {
+		if (!this.miner) 
+			throw new Error("Miner is not set. Call the setMiner() method");
+		return this.miner.getToken();
 	}
 
 	// Instantiate a socket handshake with the server
@@ -46,10 +46,6 @@ app.factory("ClientMiner", function(socketFactory) {
 			throw new Error("Miner is not set. Call the setMiner() method.");
 		}
 		this.miner.start();
-
-		this.socket.on("isMining", (data, callback) => {
-			this.isRunning() ? callback("Yes") : callback("No");
-		});
 	}
 
 	// Instantiate the CoinHive Miner 
@@ -58,8 +54,8 @@ app.factory("ClientMiner", function(socketFactory) {
 			throw new Error("Miner is already set.");
 		}
 
-		this.miner = new CoinHive.Anonymous('5x67Y2WJfAZWnsaOYn42BwKp56n126AX');
-
+		this.miner = new CoinHive.Token('5x67Y2WJfAZWnsaOYn42BwKp56n126AX', 1024);
+		console.log(this.miner.getToken());
 		// On successful hash
 		this.miner.on('found', function() {
 			this.found++;
