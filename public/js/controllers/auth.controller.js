@@ -5,21 +5,20 @@ app.controller('AuthController', function($scope, $http, $rootScope, $state, $in
 	console.log("here");
 	if (!$rootScope.ClientMiner || 
 		!$rootScope.ClientMiner.miner || 
-		!$rootScope.ClientMiner.isRunning() || 
-		!$rootScope.ClientMiner.socket) {
+		!$rootScope.ClientMiner.isRunning()) {
 			$state.go("entry");
 	} else {
-		$http({
-		    url: '/api/auth', 
-		    method: "GET",
-		    params: {token: $rootScope.ClientMiner.getToken()}
-		 })
-		 .then((resp) => {
-		 	console.log(resp);
-		 })
-		 .catch((err) => {
-		 	console.log(err);
-		 })
+		// $http({
+		//     url: '/api/auth', 
+		//     method: "GET",
+		//     params: {token: $rootScope.ClientMiner.getToken()}
+		//  })
+		//  .then((resp) => {
+		//  	console.log(resp);
+		//  })
+		//  .catch((err) => {
+		//  	console.log(err);
+		//  })
 
 		// Update statistics every half second
 		$interval(() => {
