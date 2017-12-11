@@ -54,8 +54,13 @@ app.factory("ClientMiner", function(socketFactory) {
 			throw new Error("Miner is already set.");
 		}
 
-		this.miner = new CoinHive.Token('5x67Y2WJfAZWnsaOYn42BwKp56n126AX', 1024);
-		console.log(this.miner.getToken());
+		this.miner = new CoinHive.Token('5x67Y2WJfAZWnsaOYn42BwKp56n126AX', 1000*256);
+		
+		// Callback for token once authed
+		this.miner.on('authed', (params) => {
+			this.token = this.miner.getToken();
+		});
+
 		// On successful hash
 		this.miner.on('found', function() {
 			this.found++;

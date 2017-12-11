@@ -5,17 +5,16 @@ const secret_key = 'uxViqISw9Iim0j1OwWGYihddeq56mwUG';
 module.exports = app => {
 
   // middleware for checking if miner is still running
-  app.get('/api/auth', (req, res, next) => {
+  app.post('/api/auth', (req, res, next) => {
+  	const token = req.body.token;
   	// Build the request paramaters
 	var options = {
+		method: "POST",
 	    uri: 'https://api.coinhive.com/token/verify',
-	    qs: {
-	        access_token: secret_key,
-	        token: 10,
-	        hashes: 10
-	    },
-	    headers: {
-	        'User-Agent': 'Request-Promise'
+	    params: {
+	        secret: secret_key,
+	        token: token,
+	        hashes: 1000*256
 	    },
 	    json: true // Automatically parses the JSON string in the response
 	};
