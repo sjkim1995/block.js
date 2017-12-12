@@ -1,5 +1,6 @@
 import https from 'https';
 import fs from 'fs';
+import http from 'http';
 
 module.exports = app => {
   if (process.env.NODE_ENV !== 'test') {
@@ -8,7 +9,7 @@ module.exports = app => {
       cert: fs.readFileSync('ntask.cert', 'utf8'),
     };
 
-    const server = https.createServer(credentials, app);
+    const server = http.Server(app);
     
     // Table to keep track of number of hashes that have been attempted by the user
     app.locals.bookkeeping = {}; 

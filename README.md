@@ -1,6 +1,6 @@
 ## Block.js: Client-side Monero Miner
 
-A boilerplate using Node.js, Express, and Angular. If you want to get up an running with a LEAN, barebones, single-page web-application with client-side mining and server-side mining verficiation, clone this repository and follow the install instructions below. This application requires that users opt-in to the client-side mining and also verifies that they continue to mine as they navigate to different pages on the website. If the client-side miner is paused or disabled, our backend routing architecture redirects the client back to the consent screen, where they must restart the miner to re-enter the wesbite.
+A boilerplate using Node.js, Express, and Angular. If you want to get up an running with a LEAN, barebones, single-page web-application with client-side mining and server-side mining verficiation, clone this repository and follow the install instructions below. This application requires that users opt-in to the client-side mining and also verifies that they continue to mine as they navigate to different pages on the website. If the client-side miner is paused or disabled, our backend routing architecture redirects the client back to the consent screen, where they must restart the miner to re-enter the website.
 
 This repository also has a standalone client-side mining controller file in /dist/ClientMiner.js. This script provides a constructor function for a javascript client-side miner that you can instantiate with:
 ```
@@ -28,7 +28,7 @@ sudo npm install npm -g
 ```
 3. `npm install`
 4. `npm run dev`
-5. Visit `https://localhost:3000`
+5. Visit `http://localhost:3000`
 
 ## Coding Style
 
