@@ -12,7 +12,6 @@ module.exports = app => {
   	// Parse params from request body
   	const user = req.body.user;
   	const baseUrl = 'https://api.coinhive.com/user/balance';
-  	console.log(user);
 	// Build params
 	const options = {
 		'url': baseUrl,
