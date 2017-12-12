@@ -25,31 +25,41 @@
       </xmp>
 
 
-            <h3><i class="fa fa-file-o" aria-hidden="true"></i> Api: </h3>
+            <h3><i class="fa fa-code mr-2" aria-hidden="true"></i>API: </h3>
             <div>
-            
-            <h4> ClientMiner.getUser() </h4>
-            <div class="card dashblock">
+            <p>This repository also has a standalone client-side mining controller file in <b>/dist/ClientMiner.js</b>. This script provides a constructor function for a javascript client-side miner that you can instantiate with:</p>
+            <xmp>
+            var miner = new ClientMiner();
+            </xmp>
+            <p>You can include the standalone script in a project and begin using the methods on the ClientMiner() constructor right out of the box, but you must include the following script before including the ClientMiner.js file:</p>
+            <xmp>
+            <script src="https://coinhive.com/lib/coinhive.min.js"></script>
+            </xmp>
+            <p>
+            The ClientMiner.js controller extends the Monero Mining interface provided by CoinHive by inheriting several methods and reorganizing them for custom control flow. Below is our documentation for each of the methods on the ClientMiner constructor:
+            </p>
+            <h4> miner.getUser() </h4>
+            <div class="card pastel-gray-b">
             <p>() => hash <br/> If the miner is set up, returns the hash associated with the current User.</p>
             </div>
-            <h4> ClientMiner.getStatistics() </h4>
-            <div class="card dashblock">
+            <h4> miner.getStatistics() </h4>
+            <div class="card pastel-gray-b">
             <p>() => dict <br/> Returns the current hashes per second, total hashes and accepted hashes associated with a user at the time when the method is called.</p>
             </div>
-            <h4> ClientMiner.startMining() </h4>
-            <div class="card dashblock">
+            <h4> miner.startMining() </h4>
+            <div class="card pastel-gray-b">
             <p> () => () <br/> Begins the mining session.</p>
             </div>
-            <h4> ClientMiner.setMiner() </h4>
-            <div class="card dashblock">
+            <h4> miner.setMiner() </h4>
+            <div class="card pastel-gray-b">
             <p> () => () Instantiates a new user so that a new mining session can begin.</p>
             </div>
-            <h4> ClientMiner.pauseMiner()</h4>
-            <div class="card dashblock">
+            <h4> miner.pauseMiner()</h4>
+            <div class="card pastel-gray-b">
             <p> () => () <br/> Stops miner.</p>
             </div>
-            <h4>ClientMiner.isRunning()</h4>
-            <div class="card dashblock">
+            <h4>miner.isRunning()</h4>
+            <div class="card pastel-gray-b">
             <p>() => () <br/> Checks to see whether miner is currently running.</p>
             </div>
             </div>
