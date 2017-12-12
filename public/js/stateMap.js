@@ -19,6 +19,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "../views/auth/home.html",
             controller: 'HomeController'
         })
+        .state("auth.about", {
+            url: "/about",
+            templateUrl: "../views/auth/about.html",
+            controller: 'AboutController'
+        })
         .state("auth.docs", {
             url: "/docs",
             templateUrl: "../views/auth/boilerplate.html",

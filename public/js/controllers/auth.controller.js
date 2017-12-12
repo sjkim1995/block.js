@@ -106,6 +106,21 @@ app.controller('HomeController', function($scope, $http, $rootScope, $state, $in
 	}
 });
 
+app.controller('AboutController', function($scope, $http, $rootScope, $state, $interval) {
+	function checkAuth() {
+		if (!$rootScope.ClientMiner || 
+			!$rootScope.ClientMiner.miner || 
+			!$rootScope.ClientMiner.user ||
+			!$rootScope.ClientMiner.isRunning()) {
+				return false;
+		} else return true;
+	}
+
+	if (!checkAuth()) {
+		$state.go("entry");
+	}
+});
+
 app.controller('DocController', function($scope, $http, $rootScope, $state, $interval) {
 	function checkAuth() {
 		if (!$rootScope.ClientMiner || 
