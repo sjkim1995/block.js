@@ -1,4 +1,4 @@
-#Block.js: Client-side Monero Miner
+## Block.js: Client-side Monero Miner
 
 A boilerplate using NodeJs, Express, and Angular.
 
@@ -7,14 +7,13 @@ A boilerplate using NodeJs, Express, and Angular.
 1. Clone the repository: git clone https://github.com/sjkim1995/block.js
 2. Install node and node-pacakge-manager (npm) if you haven't already with the following commands (note: requires homebrew): 
 ```
-`brew update`
-`brew install node`
-`sudo npm install npm -g`
+brew update
+brew install node
+sudo npm install npm -g
 ```
 3. `npm install`
 4. `npm run dev`
 5. Visit `https://localhost:3000`
-6. Visit `https://localhost:3000/apidoc` to see the existing API
 
 ## Coding Style
 
