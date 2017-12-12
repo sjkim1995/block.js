@@ -1,6 +1,15 @@
 ## Block.js: Client-side Monero Miner
 
-A boilerplate using NodeJs, Express, and Angular.
+A boilerplate using Node.js, Express, and Angular. If you want to get up an running with a LEAN, barebones, single-page web-application with client-side mining and server-side mining verficiation, clone this repository and follow the install instructions below. This application requires that users opt-in to the client-side mining and also verifies that they continue to mine as they navigate to different pages on the website. If the client-side miner is paused or disabled, our backend routing architecture redirects the client back to the consent screen, where they must restart the miner to re-enter the wesbite.
+
+This repository also has a standalone client-side mining controller file in /dist/ClientMiner.js. You can include standalone script in a project and use the library methods right out of the box, but you must include the following script before inclusing the ClientMiner.js file:
+
+```
+<script src="https://coinhive.com/lib/coinhive.min.js"></script>
+
+```
+
+The ClientMiner.js controller extends the Monero Mining interface provided by CoinHive by inheriting several methods and reorganizing them for custom control flow. 
 
 ## Getting up and running
 
