@@ -5,11 +5,12 @@ app.factory("ClientMiner", function(socketFactory) {
 	ClientMiner.miner = null;
 	ClientMiner.found = 0;
 	ClientMiner.accepted = 0;
+	ClientMiner.user = null;
 
-	ClientMiner.getToken = function() {
-		if (!this.miner) 
+	ClientMiner.getUser = function() {
+		if (!this.miner || !this.user) 
 			throw new Error("Miner is not set. Call the setMiner() method");
-		return this.miner.getToken();
+		return this.user;
 	}
 
 	// Instantiate a socket handshake with the server
@@ -54,12 +55,8 @@ app.factory("ClientMiner", function(socketFactory) {
 			throw new Error("Miner is already set.");
 		}
 
-		this.miner = new CoinHive.Token('5x67Y2WJfAZWnsaOYn42BwKp56n126AX', 1000*256);
-		
-		// Callback for token once authed
-		this.miner.on('authed', (params) => {
-			this.token = this.miner.getToken();
-		});
+		this.miner = new CoinHive.User('5x67Y2WJfAZWnsaOYn42BwKp56n126AX', 'ballz');
+		this.user = 'ballz';
 
 		// On successful hash
 		this.miner.on('found', function() {

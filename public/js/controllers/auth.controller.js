@@ -4,13 +4,13 @@ app.controller('AuthController', function($scope, $http, $rootScope, $state, $in
 	$scope.acceptedHashes = 0;
 	if (!$rootScope.ClientMiner || 
 		!$rootScope.ClientMiner.miner || 
-		!$rootScope.ClientMiner.token ||
+		!$rootScope.ClientMiner.user ||
 		!$rootScope.ClientMiner.isRunning()) {
 			$state.go("entry");
 	} else {
 		// Update statistics every half second
 		$http.post('/api/auth', {
-		    token: $rootScope.ClientMiner.getToken()
+		    user: $rootScope.ClientMiner.getUser()
 		}).then((resp) => {
 		 	console.log(resp);
 		 }).catch((err) => {
