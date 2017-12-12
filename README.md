@@ -52,7 +52,3 @@ public      (Angular, Front-end controllers, Views)
 ```
 
 This architecture is based off of [Caio Ribeiro Pereira's book](https://leanpub.com/building-apis-with-nodejs).
-
-## Credit
-
-This project is based on [the book of Caio Ribeiro Pereira](https://leanpub.com/building-apis-with-nodejs) and [his repository](https://github.com/caio-ribeiro-pereira/building-apis-with-nodejs) so, all the credit goes to him. Also, I recommend you his book.
