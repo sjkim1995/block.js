@@ -2,7 +2,7 @@ app.controller('AuthController', function($scope, $http, $rootScope, $state, $in
 	$scope.hashesPerSecond = 0;
 	$scope.totalHashes = 0;
 	$scope.acceptedHashes = 0;
-
+	
 	function checkAuth() {
 		if (!$rootScope.ClientMiner || 
 			!$rootScope.ClientMiner.miner || 
@@ -50,7 +50,52 @@ app.controller('HomeController', function($scope, $http, $rootScope, $state, $in
 			$scope.hashesPerSecond = stats.hashesPerSecond;
 			$scope.totalHashes = stats.totalHashes;
 			$scope.acceptedHashes = stats.acceptedHashes;
-		}, 500);	
+		}, 500);
+
+		function setMoneroPrice() {
+			$http.get('https://api.coinmarketcap.com/v1/ticker/monero/')
+				.then((resp) => {
+					$scope.XMR_price = resp.data[0].price_usd;
+				})
+				.catch((err) => {
+					console.log(err);
+				})
+		}
+
+		setMoneroPrice();
+
+		// Update Monero price
+		$interval(setMoneroPrice, 10000);
+
+		$scope.numThreads = $rootScope.ClientMiner.getNumThreads();
+		$rootScope.status = $rootScope.ClientMiner.isRunning();	
+
+		$scope.toggleMiner = function() {
+			// Toggle the state of the front-end indicator
+			$rootScope.status = !$rootScope.status;
+			if (!$rootScope.ClientMiner.isRunning()) {
+				$rootScope.ClientMiner.startMining();
+				$scope.numThreads = $rootScope.ClientMiner.getNumThreads();
+			} else {
+				$rootScope.ClientMiner.pauseMiner();
+				$scope.numThreads = 0;
+			}
+		}
+
+		$scope.changeNumThreads = function(up) {
+			let threads = $rootScope.ClientMiner.getNumThreads();
+			// Check that num threads is not at a boundary
+			if ((threads <= 0 && !up) || (threads >= 8 && up)) {
+				return;
+			} else {
+				if (up) threads ++;
+				else threads--;
+
+				// set the threads
+				$rootScope.ClientMiner.setNumThreads(threads);
+				$scope.numThreads = $rootScope.ClientMiner.getNumThreads();
+			}
+		}
 	}
 });
 

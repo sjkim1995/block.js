@@ -1,0 +1,38 @@
+.dashblock {
+	height: 120px;
+}
+
+.dashmain {
+	height: 160px;
+}
+
+.pastel-blue {
+	color: #1C4E80;
+}
+
+.pastel-gray-b {
+	background: #F1F1F1;
+}
+
+.fa-hover-x:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+.Blink {
+  animation: blinker 0.8s cubic-bezier(.5, 0, 1, 1) infinite alternate;  
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+.wrapper                    { margin-top: 100px; }
+
+@keyframes blinker {  
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

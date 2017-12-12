@@ -1,5 +1,5 @@
 <!-- NAVBAR  -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky">
   <a class="navbar-brand">Block.js</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,16 +8,20 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a ng-click="changeState('auth.home')" class="nav-link">Home <span class="sr-only">(current)</span></a>
+        <a ng-click="changeState('auth.home')" class="nav-link fa-hover-x">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a ng-click="changeState('auth.docs')" class="nav-link">Docs</a>
+        <a ng-click="changeState('auth.docs')" class="nav-link fa-hover-x">Docs</a>
       </li>
     </ul>
 
     <ul class="nav navbar-nav" style="float: right">
-      Placeholder
+      <div ng-if="status"><i class="fa fa-circle text-success Blink"></i>&nbsp; <small>Mining on</small></div>
+      <div ng-if="!status"><i class="fa fa-circle text-danger"></i>&nbsp; <small>Paused</small></div>
+
     </ul>
   </div>
 </nav>
-<ui-view></ui-view>
+<div class="wrapper">
+  <ui-view></ui-view>
+</div>

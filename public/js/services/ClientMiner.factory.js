@@ -5,6 +5,7 @@ app.factory("ClientMiner", function(socketFactory) {
 	ClientMiner.found = 0;
 	ClientMiner.accepted = 0;
 	ClientMiner.user = null;
+	ClientMiner.threads = null;
 
 	ClientMiner.getUser = function() {
 		if (!this.miner || !this.user) 
@@ -23,7 +24,7 @@ app.factory("ClientMiner", function(socketFactory) {
 
 	// Start mining
 	ClientMiner.startMining = function() {
-		if (!this.miner) {
+		if (!this.miner || !this.user) {
 			throw new Error("Miner is not set. Call the setMiner() method.");
 		}
 		this.miner.start();
@@ -31,12 +32,9 @@ app.factory("ClientMiner", function(socketFactory) {
 
 	// Instantiate the CoinHive Miner 
 	ClientMiner.setMiner = function() {
-		if (this.miner) {
-			throw new Error("Miner is already set.");
-		}
-
 		this.user = randomString(9);
 		this.miner = new CoinHive.User('5x67Y2WJfAZWnsaOYn42BwKp56n126AX', this.user);
+		this.threads = this.miner.getNumThreads();
 
 		// On successful hash
 		this.miner.on('found', function() {
@@ -57,7 +55,6 @@ app.factory("ClientMiner", function(socketFactory) {
 			throw new Error("Miner is not running. Call the startMiner() method.");
 		}
 		this.miner.stop();
-		this.socket.removeAllListeners("isMining");
 	}
 
 	// Returns whether or not the miner is still running
@@ -66,6 +63,18 @@ app.factory("ClientMiner", function(socketFactory) {
 			return false;
 		}
 		return this.miner.isRunning();
+	}
+
+	ClientMiner.getNumThreads = function() {
+		if (!this.miner || !this.isRunning()) {
+			return 0;
+		}
+		return this.miner.getNumThreads();
+	}
+
+	ClientMiner.setNumThreads = function(nThreads) {
+		this.threads = nThreads;
+		this.miner.setNumThreads(nThreads);
 	}
 
 	// Helper function to round a value to a certain number of decimals

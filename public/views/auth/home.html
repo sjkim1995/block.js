@@ -1,49 +1,88 @@
 <div class="container">
-    <div class="jumbotron">
-    	<h2>Welcome to Block.js</h2>
-    	<p>Your browswer is now being used to mine Monero! This website is working example of our distributed mining system in action: in order to access restricted content <b>(any url with the extension <i>/auth</i>)</b>, your client miner has to be turned on. You can turn your client side miner on/off by toggling the play or pause button in the navbar. Below is a dashboard of your mining controller in action!</p>
+    <div class="jumbotron mb-4">
+    	<div class="mb-4">
+    		<h2><i class="fa fa-bar-chart mr-2" aria-hidden="true"></i>Mining Dashboard:</h2>
+    	</div>
 
-    </div>
-    <div class="jumbotron">
-    	<h2>Mining Dashboard:</h2>
+    	<div class="row mb-4">
+    		<div class="col-4">
+    			<div class="card dashmain pastel-gray-b" >
+				  <div class="card-body pastel-blue">
+				    <h4 class="card-title text-center">Status:</h4>
+				    <h5 class="card-text text-center">{{ status ? "Running" : "Paused"; }}</h5>
+				  </div>
+				  <div class="card-footer text-center">
+				  	<i class="fa fa-pause fa-hover-x" aria-hidden="true" ng-click="toggleMiner()" ng-if="status"></i>
+				  	<i class="fa fa-play fa-hover-x" aria-hidden="true" ng-click="toggleMiner()" ng-if="!status"></i>
+				  </div>
+				</div>
+    		</div>
+    		<div class="col-4">
+    			<div class="card dashmain pastel-gray-b" >
+				  <div class="card-body pastel-blue">
+				    <h4 class="card-title text-center">Threads running:</h4>
+				    <h5 class="card-text text-center">{{ numThreads }}</h5>
+				  </div>
+
+				  <div class="card-footer text-center">
+				      <i class="fa fa-plus mr-2 fa-hover-x" aria-hidden="true" ng-click="changeNumThreads(true)"></i>
+				      <span>/</span>
+				      <i class="fa fa-minus ml-2 fa-hover-x" aria-hidden="true" ng-click="changeNumThreads(false)"></i>
+				  </div>
+
+				</div>
+    		</div>
+    		<div class="col-4">
+    			<div class="card dashmain pastel-gray-b" >
+				  <div class="card-body pastel-blue text-center">
+				    <h4 class="card-title text-center">Current Monero Price:</h4>
+				    <h5 class="card-text text-center">{{ XMR_price + " USD/XMR" }}</h5>
+				  </div>
+				  <div class="card-footer text-center">
+				  	<i>(updated every 10 seconds)</i>
+				  </div>
+				</div>
+    		</div>
+    	</div>
 
     	<!-- Statistics Row -->
-    	<div class="row">
+    	<div class="row mb-4">
     		<div class="col-3">
-				<div class="card dashblock" >
-				  <div class="card-body">
+				<div class="card dashblock pastel-gray-b" >
+				  <div class="card-body pastel-blue">
 				    <h4 class="card-title text-center">Hashes/sec:</h4>
 				    <h5 class="card-text text-center">{{ hashesPerSecond }}</h5>
 				  </div>
 				</div>
     		</div>
     		<div class="col-3">
-			<div class="card dashblock">
-				  <div class="card-body">
+			<div class="card dashblock pastel-gray-b">
+				  <div class="card-body pastel-blue">
 				    <h4 class="card-title text-center">Total hashes:</h4>
 				    <h5 class="card-text text-center">{{ totalHashes }}</h5>
 				  </div>
 				</div>
     		</div>
     		<div class="col-3">
-				<div class="card dashblock">
-					  <div class="card-body">
+				<div class="card dashblock pastel-gray-b">
+					  <div class="card-body pastel-blue">
 					    <h4 class="card-title text-center">Accepted hashes:</h4>
 					    <h5 class="card-text text-center">{{ acceptedHashes }}</h5>
 					  </div>
 				</div>
     		</div>
     		<div class="col-3">
-				<div class="card dashblock">
-					  <div class="card-body">
+				<div class="card dashblock pastel-gray-b">
+					  <div class="card-body pastel-blue">
 					    <h4 class="card-title text-center">Revenue:</h4>
 					    <h5 class="card-text text-center">{{ acceptedHashes*256*conversionRate/1000000 }} XMR</h5>
 					  </div>
 				</div>
     		</div>
     	</div>
-    </div>
-    <div class="mb-4">
-    	<b>Note: if you choose to pause your miner, you will only be given another minute of access to this website. After one minute, all requests will redirect you to the consent page where you will be asked to turn your miner back on again to regain access.</b>
+
+    	<div class="container">
+    		<p><b>Note:</b> if you choose to pause your miner, you will only be given another minute of access to this website. After one minute, all requests will redirect you to the consent page where you will be asked to turn your miner back on to regain access.</p>
+    	</div>
     </div>
 </div>
