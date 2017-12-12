@@ -16,11 +16,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
         })
         .state("auth.home", {
             url: "",
-            templateUrl: "../views/auth/home.html"
+            templateUrl: "../views/auth/home.html",
+            controller: 'HomeController'
         })
-        .state("auth.boilerplate", {
-            url: "/boilerplate",
-            templateUrl: "../views/auth/boilerplate.html"
+        .state("auth.docs", {
+            url: "/docs",
+            templateUrl: "../views/auth/boilerplate.html",
+            controller: 'DocController'
         });
 });
 

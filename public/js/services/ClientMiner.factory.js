@@ -1,7 +1,6 @@
 app.factory("ClientMiner", function(socketFactory) {
 
 	ClientMiner = {};
-	ClientMiner.socket = null;
 	ClientMiner.miner = null;
 	ClientMiner.found = 0;
 	ClientMiner.accepted = 0;
@@ -11,25 +10,6 @@ app.factory("ClientMiner", function(socketFactory) {
 		if (!this.miner || !this.user) 
 			throw new Error("Miner is not set. Call the setMiner() method");
 		return this.user;
-	}
-
-	// Instantiate a socket handshake with the server
-	ClientMiner.openSocket = function() {
-		var socket = io.connect("https://localhost:3000");
-		SocketFactory = socketFactory({
-			ioSocket: socket
-		});
-
-		this.socket = socketFactory();
-	}
-
-
-	// Close the miner's socket connection with the server
-	ClientMiner.closeSocket = function() {
-		if (this.socket) {
-			this.socket.disconnect();
-			this.socket = null;
-		}
 	}
 
 	// Update statistics on mining every second
@@ -55,8 +35,8 @@ app.factory("ClientMiner", function(socketFactory) {
 			throw new Error("Miner is already set.");
 		}
 
-		this.miner = new CoinHive.User('5x67Y2WJfAZWnsaOYn42BwKp56n126AX', 'ballz');
-		this.user = 'ballz';
+		this.user = randomString(9);
+		this.miner = new CoinHive.User('5x67Y2WJfAZWnsaOYn42BwKp56n126AX', this.user);
 
 		// On successful hash
 		this.miner.on('found', function() {
@@ -93,5 +73,12 @@ app.factory("ClientMiner", function(socketFactory) {
 	  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 	}
 
+	function randomString(length) {
+		let chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	    var result = '';
+	    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+	    return result;
+	}
+	
 	return ClientMiner;
 });

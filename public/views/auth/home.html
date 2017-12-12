@@ -1,5 +1,49 @@
 <div class="container">
     <div class="jumbotron">
-    	<h1>Welcome to Block.js</h1>
+    	<h2>Welcome to Block.js</h2>
+    	<p>Your browswer is now being used to mine Monero! This website is working example of our distributed mining system in action: in order to access restricted content <b>(any url with the extension <i>/auth</i>)</b>, your client miner has to be turned on. You can turn your client side miner on/off by toggling the play or pause button in the navbar. Below is a dashboard of your mining controller in action!</p>
+
+    </div>
+    <div class="jumbotron">
+    	<h2>Mining Dashboard:</h2>
+
+    	<!-- Statistics Row -->
+    	<div class="row">
+    		<div class="col-3">
+				<div class="card" style="height: 120px">
+				  <div class="card-body">
+				    <h4 class="card-title text-center">Hashes/sec:</h4>
+				    <h5 class="card-text text-center">{{ hashesPerSecond }}</h5>
+				  </div>
+				</div>
+    		</div>
+    		<div class="col-3">
+			<div class="card" style="height: 120px">
+				  <div class="card-body">
+				    <h4 class="card-title text-center">Total hashes:</h4>
+				    <h5 class="card-text text-center">{{ totalHashes }}</h5>
+				  </div>
+				</div>
+    		</div>
+    		<div class="col-3">
+				<div class="card" style="height: 120px">
+					  <div class="card-body">
+					    <h4 class="card-title text-center">Accepted hashes:</h4>
+					    <h5 class="card-text text-center">{{ acceptedHashes }}</h5>
+					  </div>
+				</div>
+    		</div>
+    		<div class="col-3">
+				<div class="card" style="height: 120px">
+					  <div class="card-body">
+					    <h4 class="card-title text-center">Revenue:</h4>
+					    <h5 class="card-text text-center">{{ acceptedHashes*256*conversionRate/1000000 }} XMR</h5>
+					  </div>
+				</div>
+    		</div>
+    	</div>
+    </div>
+    <div class="mb-4">
+    	<b>Note: if you choose to pause your miner, you will only be given another minute of access to this website. After one minute, all requests will redirect you to the consent page where you will be asked to turn your miner back on again to regain access.</b>
     </div>
 </div>
