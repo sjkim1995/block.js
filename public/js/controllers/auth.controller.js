@@ -15,20 +15,27 @@ app.controller('AuthController', function($scope, $http, $rootScope, $state, $in
 	if (!checkAuth()) {
 		$state.go("entry");
 	} 
-	$scope.changeState = function(state) {
-		// Update statistics every half second
-		$http.post('/api/auth', {
+
+	function verifyMining() {
+		return $http.post('/api/auth', {
 		    user: $rootScope.ClientMiner.getUser()
 		}).then((resp) => {
 			console.log(resp);
-		 	if (resp.status == 200) {
-		 		$state.go(state);
-		 	} else {
-		 		$state.go('entry');
-		 	}
+			return resp;
 		 }).catch((err) => {
 		 	console.log(err);
 		 });
+		
+	}
+	$scope.changeState = function(state) {
+		verifyMining()
+			.then((resp) => {
+				if (resp.status == 200) {
+					$state.go(state);
+				} else {
+					$state.go("entry");
+				}
+			});
 	}
 });
 
