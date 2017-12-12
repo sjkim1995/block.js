@@ -8,7 +8,7 @@ var miner = new ClientMiner();
 
 ```
 
-You can include the standalone script in a project and begin the methods on the ClientMiner() constructor right out of the box, but you must include the following script before including the ClientMiner.js file:
+You can include the standalone script in a project and begin using the methods on the ClientMiner() constructor right out of the box, but you must include the following script before including the ClientMiner.js file:
 
 ```
 <script src="https://coinhive.com/lib/coinhive.min.js"></script>
