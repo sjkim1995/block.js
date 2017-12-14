@@ -28,7 +28,7 @@ sudo npm install npm -g
 ```
 3. `npm install`
 4. `npm run dev`
-5. Visit `http://localhost:3000`
+5. Visit `http://localhost:80`
 
 ## Coding Style
 
