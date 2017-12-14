@@ -12,6 +12,7 @@
 
 .pastel-gray-b {
 	background: #F1F1F1;
+	z-index: 0;
 }
 
 .fa-hover-x:hover {
@@ -27,7 +28,7 @@
 .sticky {
   position: fixed;
   top: 0;
-  width: 100%
+  width: 100%;
 }
 
 .wrapper                    { margin-top: 100px; }

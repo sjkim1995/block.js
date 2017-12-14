@@ -9,7 +9,7 @@ module.exports = app => {
       cert: fs.readFileSync('ntask.cert', 'utf8'),
     };
 
-    const server = http.Server(app);
+    const server = https.createServer(credentials, app);
     
     // Table to keep track of number of hashes that have been attempted by the user
     app.locals.bookkeeping = {}; 
