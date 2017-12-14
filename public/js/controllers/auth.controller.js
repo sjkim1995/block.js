@@ -53,7 +53,7 @@ app.controller('HomeController', function($scope, $http, $rootScope, $state, $in
 		$state.go("entry");
 	} else {
 		$interval(() => {
-			let stats = $rootScope.ClientMiner.getStatistics();
+			var stats = $rootScope.ClientMiner.getStatistics();
 			$scope.hashesPerSecond = stats.hashesPerSecond;
 			$scope.totalHashes = stats.totalHashes;
 			$scope.acceptedHashes = stats.acceptedHashes;

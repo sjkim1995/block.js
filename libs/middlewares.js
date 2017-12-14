@@ -7,7 +7,7 @@ import logger from './logger.js';
 
 module.exports = app => {
 
-  app.set('port', 3000);
+  app.set('port', 80);
   app.set('json spaces', 4);
   app.use(express.static('public'));
 
